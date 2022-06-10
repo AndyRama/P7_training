@@ -1,0 +1,113 @@
+//Responsive for card recipes
+@media screen and (max-width: 1260px) {
+  .recipe {
+    &__mainContainer {
+      width: 100%;
+      margin: 2rem auto;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 25px;
+    }
+
+    &__container {
+      max-width: 380px;
+    }
+  }
+}
+
+//Responsive for tags
+@media screen and (max-width: 1024px) {
+  .tags {
+    &__taglist {
+      grid-template-columns: repeat(2, minmax(150px, 1fr));
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tags {
+    &__taglist {
+      grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+  }
+}
+
+//Responsive filters
+@media screen and (max-width: 1024px) {
+  .filters {
+    &__taglist {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    &__mainContainers {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__container {
+      flex-shrink: 0;
+    }
+
+    &__inputContainer {
+      position: initial;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    max-width: 100vw;
+  }
+
+  .main {
+    &__wrapper {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (max-width: 748px) {
+  .btn-Expansed {
+    width: 404px !important;
+  }
+  
+  .btn-not-Expansed {
+    width: 200px !important;
+  }
+
+  .filters__inputContainer {
+    width: 401px !important;
+    align-content: center !important;
+  }
+
+  .tags__taglist {
+    gap: none;
+  }
+}
+
+@media screen and (max-width: 536PX) {
+  .filters__Section {
+    margin-left: 25%;
+  }
+
+  .btn-Expansed {
+    width: 197px !important;
+  }
+
+  .filters__inputContainer {
+    width: 194px !important;
+  }
+
+  .tags {
+    &__taglist {
+      grid-template-columns: repeat(1, minmax(100px, 1fr));
+    }
+  }
+}
+
+
+@media screen and (max-width: 472px) {
+  .filters__Section {
+    margin-left: 20%;
+  }
+}

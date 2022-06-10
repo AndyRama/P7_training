@@ -1,0 +1,57 @@
+.filters {
+  &__tags {
+    width: fit-content;
+    margin: 2rem 1rem 0 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__dropDown {
+    width: 40px;
+    height: 54px;
+    background: none;
+    cursor: pointer;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+  }
+
+  &__btn {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 9px 20px;
+
+    &--ingredients {
+      background-color: $color-1;
+    }
+
+    &--device {
+      background-color: $color-2;
+    }
+
+    &--ustensils {
+      background-color: $color-3;
+    }
+  }
+}
+
+.ico {
+  &__search {
+    width: 33px;
+    height: 33px;
+    margin-right: 24px;
+  } 
+ 
+  &__dropUp {
+    transform: rotate(180deg);
+  }
+}
+
+#close-message {
+  margin-top: 5px;
+  border: none;
+  background-color: #fbf0f0 !important;
+}
