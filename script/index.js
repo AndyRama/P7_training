@@ -22,7 +22,7 @@ function recipeCardDom(recipes) {
   const recipeCard = document.getElementById("recipeContainer");
   recipeCard.innerHTML = "";
   recipes.map(recipe => {
-    recipeCard.innerHTML = `
+    recipeCard.innerHTML += `
     <article class="recipe__container">
     <div class="recipe__picture">
       <img src="./public/assets/recipes-images/recette_id_${recipe.id}.jpg" alt="${recipe.name}" class="recipe__img">
@@ -47,7 +47,18 @@ function recipeCardDom(recipes) {
       </div>
     </div>
   </article>
-  
+  `;
+  const ingredientList = document.getElementById(`recipe-${recipe.id}`);
+  const ingredients = recipe.ingredients;
+  ingredients.map(ingredient => {
+    ingredientList.innerHTML += `
+    <li class="recipe__ingredient">${ingredient.ingredient} ${ingredient.quantity == undefined ? "" : ":"}
+    <span class="recipe__quantity">
+      ${ingredient.quantity === undefined ? "" : ingredient.quantity}
+      ${ingredient.unit === undefined ? "" : ingredient.unit}
+    </span>
+  </li>
     `
+  })
   })
 }
