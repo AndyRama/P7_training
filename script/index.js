@@ -61,27 +61,49 @@ function recipeCardDom(recipes) {
       `
     })
   });
-
-  allIngredients= [];
-  allDevices = [];
+  //get all array of items
   allUstensils = [];
+  allDevices = [];
+  allIngredients = [];
 
+  //display all tags in taglist container
   recipes.forEach((element) => {
-
-    element.ingredients.map((e)=> {
+    //ingrédients
+    element.ingredients.map((e) => {
       if(allIngredients.indexOf(e.ingredient) == -1) allIngredients.push(e.ingredient);
-      console.log(allIngredients)
     });
-
-    if(allDevices.indexOf(element.appliance) == -1) allDevices.push(element.appliance);
-     
-
+    
+    //devices
+    if (allDevices.indexOf(element.appliance) == -1) allDevices.push(element.appliance);
+    
+    //ustensiles
     element.ustensils.map((e) => {
-      if(allUstensils.indexOf(e) == -1) allUstensils.push(e);
+      if (allUstensils.indexOf(e) == -1) allUstensils.push(e);
     });
   });
 
   showTags(allIngredients, "ingredientsTaglist", "ingredients");
-  showTags(allDevices, "devicesTaglist", "devices");
-  showTags(allUstensils, "ustensilsTaglist", "utensils");
+  showTags(allDevices, "devicesTaglist", "device");
+  showTags(allUstensils, "ustensilsTaglist", "ustensils");
+}
+// create a new tag, order by alpahbetique
+function showTags(items, tagId, type) {
+  const tag = document.getElementById(tagId);
+  console.log(tag);
+  let templateTaglist = ``;
+  items.sort();
+  // display tag with template
+  items.map(item => {
+    let contentItem = item[0].toUpperCase() + item.toLowerCase().slice(1);
+    if (filteredIngredients.indexOf(item) != -1 || filteredDevices.indexOf(item) != -1 || filteredUstensils.indexOf(item) != -1) {
+      templateTaglist += `
+        <li><button  onclick="addFilter(this)" aria-label="${contentItem}" data-title="${contentItem}" class="tag--${type} tag is-selected" data-type="${type}" data-item="${item}">${contentItem}</button></li>
+      `;
+    } else {
+      templateTaglist += `
+        <li ><button  onclick="addFilter(this)" aria-label="${contentItem}" data-title="${contentItem}" class="tag--${type} tag" data-type="${type}" data-item="${item}">${contentItem}</button></li>
+      `;
+    }
+  })
+  tag.innerHTML = templateTaglist;
 }

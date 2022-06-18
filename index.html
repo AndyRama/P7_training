@@ -25,64 +25,74 @@
         </div>
 
           <!-- ingredients -->
-        <div class="filters__Section">
           <div class="filters__container">
             <form class="filters__form filters__form--ing">
-              <input type="search" id="inputIng" class="filters__listContainer filters__listContainer--ingredients filters__input"
-                placeholder="Ingredients" data-search="ingredients">
-                <button id="ingBtn" class="filters__dropDown filters__btn--ingredients" aria-controls="ingredientsContainer">
-                  <img src="/public/assets/dropdown-icon-down.png" alt="icon Down chevron" class="ico ico__dropDown">
-                </button>
-            </form>
-
+              <input id="inputIng" type="search" class="autocomplete filters__listContainer filters__listContainer--ingredients filters__input"
+              placeholder="Ingrédients"  data-search="ingredients" autocomplete="off" >
+              <button id="ingBtn" class=" filters__dropDown filters__btn--ingredients" aria-controls="ingredientsContainer">
+                <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown">
+              </button> 
+            </form> 
+           
+            <!-- <ul id="sugestion"></ul> -->
+            <ul id="results__ingredients" class="results__ingredients" style="display: none;"></ul>
+ 
             <div id="ingredientsContainer" class="filters__inputContainer filters__inputContainer--ingredients">
-              <div id="ingredientsContainer" class="filters__inputContainer filters__inputContainer--ingredients">
-                <ul id="ingredientsTagsList" class="tags__taglist tags__taglist--ingredients">
-                  <!-- update with JS -->
+              <div id="ingredientsTagsContainer" class="tags__container tags__container--ingredients">
+                <ul id="ingredientsTaglist" class="tags__taglist tags__taglist--ingredients ">
+                  <!-- dynamic chargement -->
                 </ul>
               </div>
             </div>
           </div>
-
+                  
           <!-- devices -->
           <div class="filters__container">
             <form class="filters__form filters__form--dev">
-              <input type="search" id="inputDev" class="filters__listContainer filters__listContainer--device filters__input"
-                placeholder="Devices" data-search="devices">
-                <button id="devBtn" class="filters__dropDown filters__btn--device" aria-controls="devicesContainer">
-                  <img src="/public/assets/dropdown-icon-down.png" alt="icon Down chevron" class="ico ico__dropDown">
-                </button>
+              <input id="inputDev" class="autocomplete filters__listContainer filters__listContainer--device filters__input" placeholder="Appareils"
+                type="search" data-search="devices" autocomplete="off">
+              <button id="devBtn" class="filters__dropDown filters__btn--device" aria-controls="deviceContainer">
+                <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown">
+              </button>
             </form>
 
+          <!-- <ul id="sugestion"></ul> -->
+          <ul id="results__devices" class="results" style="display: none;"></ul>
+ 
+
             <div id="deviceContainer" class="filters__inputContainer filters__inputContainer--device">
-              <div id="devicesTagsContainer" class="filters__inputContainer filters__inputContainer--device">
-                <ul id="devicesTagsList" class="tags__taglist tags__taglist--device">
-                  <!-- update with JS -->
+              <div id="devicesTagsContainer" class="tags__container tags__container--device">
+                <!-- dynamic chargement -->
+                <ul id="devicesTaglist" class="tags__taglist tags__taglist--device">
+                  <!-- dynamic chargement -->
                 </ul>
               </div>
             </div>
-          </div>
+          </div> 
 
           <!-- ustensils -->
           <div class="filters__container">
             <form class="filters__form filters__form--ust">
-              <input type="search" id="inputUst" class="filters__listContainer filters__listContainer--ustensils filters__input"
-                placeholder="Ustensils" data-search="ustensils">
-                <button id="ingBtn" class="filters__dropDown filters__btn--ustensils" aria-controls="ustensilsContainer">
-                  <img src="/public/assets/dropdown-icon-down.png" alt="icon Down chevron" class="ico ico__dropDown">
-                </button>
+              <input id="inputUst" class="autocomplete filters__listContainer filters__listContainer--ustensils filters__input"
+                placeholder="Ustensiles" type="search" data-search="ustensils" autocomplete="off">
+              <button id="ustBtn" class=" filters__dropDown filters__btn--ustensils" aria-controls="ustensilsContainer">
+                <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown">
+              </button>
             </form>
 
+          <!-- <ul id="sugestion"></ul> -->
+          <ul id="results__untensils" class="results" style="display: none;"></ul>
+ 
             <div id="ustensilsContainer" class="filters__inputContainer filters__inputContainer--ustensils">
-              <div id="ustensilsTagsContainer" class="filters__inputContainer filters__inputContainer--ustensils">
-                <ul id="ustensilsTagsList" class="tags__taglist tags__taglist--ustensils">
-                  <!-- update with JS -->
+              <div id="ustensilsTagsContainer" class="tags__container tags__container--ustensils">
+                <!-- dynamic chargement -->
+                <ul id="ustensilsTaglist" class="tags__taglist tags__taglist--ustensils">
+                  <!-- dynamic chargement -->
                 </ul>
               </div>
             </div>
           </div>
-
-        </div>
+        </div> 
       </section>
 
       <section id="recipeContainer" class="recipe__mainContainer">
