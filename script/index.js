@@ -50,15 +50,38 @@ function recipeCardDom(recipes) {
   `;
   const ingredientList = document.getElementById(`recipe-${recipe.id}`);
   const ingredients = recipe.ingredients;
-  ingredients.map(ingredient => {
-    ingredientList.innerHTML += `
-    <li class="recipe__ingredient">${ingredient.ingredient} ${ingredient.quantity == undefined ? "" : ":"}
-    <span class="recipe__quantity">
-      ${ingredient.quantity === undefined ? "" : ingredient.quantity}
-      ${ingredient.unit === undefined ? "" : ingredient.unit}
-    </span>
-  </li>
-    `
-  })
-  })
+    ingredients.map(ingredient => {
+      ingredientList.innerHTML += `
+      <li class="recipe__ingredient">${ingredient.ingredient} ${ingredient.quantity == undefined ? "" : ":"}
+      <span class="recipe__quantity">
+        ${ingredient.quantity === undefined ? "" : ingredient.quantity}
+        ${ingredient.unit === undefined ? "" : ingredient.unit}
+      </span>
+    </li>
+      `
+    })
+  });
+
+  allIngredients= [];
+  allDevices = [];
+  allUstensils = [];
+
+  recipes.forEach((element) => {
+
+    element.ingredients.map((e)=> {
+      if(allIngredients.indexOf(e.ingredient) == -1) allIngredients.push(e.ingredient);
+      console.log(allIngredients)
+    });
+
+    if(allDevices.indexOf(element.appliance) == -1) allDevices.push(element.appliance);
+     
+
+    element.ustensils.map((e) => {
+      if(allUstensils.indexOf(e) == -1) allUstensils.push(e);
+    });
+  });
+
+  showTags(allIngredients, "ingredientsTaglist", "ingredients");
+  showTags(allDevices, "devicesTaglist", "devices");
+  showTags(allUstensils, "ustensilsTaglist", "utensils");
 }
