@@ -86,6 +86,7 @@ function recipeCardDom(recipes) {
   showTags(allDevices, "devicesTaglist", "device");
   showTags(allUstensils, "ustensilsTaglist", "ustensils");
 }
+
 // create a new tag, order by alpahbetique
 function showTags(items, tagId, type) {
   const tag = document.getElementById(tagId);
