@@ -86,25 +86,3 @@ function recipeCardDom(recipes) {
   showTags(allDevices, "devicesTaglist", "device");
   showTags(allUstensils, "ustensilsTaglist", "ustensils");
 }
-
-// create a new tag, order by alpahbetique
-function showTags(items, tagId, type) {
-  const tag = document.getElementById(tagId);
-  console.log(tag);
-  let templateTaglist = ``;
-  items.sort();
-  // display tag with template
-  items.map(item => {
-    let contentItem = item[0].toUpperCase() + item.toLowerCase().slice(1);
-    if (filteredIngredients.indexOf(item) != -1 || filteredDevices.indexOf(item) != -1 || filteredUstensils.indexOf(item) != -1) {
-      templateTaglist += `
-        <li><button  onclick="addFilter(this)" aria-label="${contentItem}" data-title="${contentItem}" class="tag--${type} tag is-selected" data-type="${type}" data-item="${item}">${contentItem}</button></li>
-      `;
-    } else {
-      templateTaglist += `
-        <li ><button  onclick="addFilter(this)" aria-label="${contentItem}" data-title="${contentItem}" class="tag--${type} tag" data-type="${type}" data-item="${item}">${contentItem}</button></li>
-      `;
-    }
-  })
-  tag.innerHTML = templateTaglist;
-}
