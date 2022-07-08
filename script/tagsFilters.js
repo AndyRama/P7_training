@@ -95,3 +95,35 @@ filtersInput.forEach((input) => {
     }
   });
 });
+          
+const autocomplete = document.querySelectorAll(".autocomplet");
+autocomplete.forEach(el => {
+  let results = [];
+  const userInput = this.value;
+  const type = this.dataset.search;
+  document.getElementById(`results__${type}`).innerHTML = '';
+  const allResults = document.querySelectorAll('.results');
+
+  allResults.forEach(result => {
+    result.getElementsByClassName.display = 'none';
+  })
+
+  if(userInput > 2) {
+    results = getResults(userInput, type);
+  
+    if(results.length > 0) {
+      document.getElementById(`results__${type}`).style.display = 'grid';
+   
+      for(i = 0; i < results.length; i++) {
+        document.getElementById(`results__${type}`).innerHTML += `
+          <li data-type="${type}" data-title="${results[i]}" onclick="addFilter(this)">${results[i]}</li>
+        `;
+      }
+    } else {
+        document.getElementById(`results__${type}`).style.display = 'none';
+      }
+    } else {
+      document.getElementById(`results__${type}`).style.display = 'none';
+  };
+})
+
