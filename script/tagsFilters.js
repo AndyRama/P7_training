@@ -57,7 +57,7 @@ function addFilter(e) {
         </svg>
       </button>
     `;
-    launchSearch();
+    // launchSearch();
   }
 }
 
@@ -95,35 +95,61 @@ filtersInput.forEach((input) => {
     }
   });
 });
-          
-const autocomplete = document.querySelectorAll(".autocomplet");
+
+const autocomplete = document.querySelectorAll(".autocomplete");
 autocomplete.forEach(el => {
-  let results = [];
-  const userInput = this.value;
-  const type = this.dataset.search;
-  document.getElementById(`results__${type}`).innerHTML = '';
-  const allResults = document.querySelectorAll('.results');
 
-  allResults.forEach(result => {
-    result.getElementsByClassName.display = 'none';
-  })
+  el.oninput = function () {
+    let results = [];
+    const userInput = this.value;
+    const type = this.dataset.search;
+    // console.log(type);
+    document.getElementById(`results__${type}`).innerHTML = '';
+    const allResults = document.querySelectorAll('.results');
+    
+    allResults.forEach(result => {
+      result.style.display = 'none';
+    })
 
-  if(userInput > 2) {
-    results = getResults(userInput, type);
-  
-    if(results.length > 0) {
-      document.getElementById(`results__${type}`).style.display = 'grid';
-   
-      for(i = 0; i < results.length; i++) {
-        document.getElementById(`results__${type}`).innerHTML += `
-          <li data-type="${type}" data-title="${results[i]}" onclick="addFilter(this)">${results[i]}</li>
-        `;
-      }
-    } else {
+    if (userInput.length > 2) {
+      results = getResults(userInput, type);
+
+      if(results.length > 0) {
+        document.getElementById(`results__${type}`).style.display = 'grid';
+
+        for (i = 0; i < results.length; i++) {
+          document.getElementById(`results__${type}`).innerHTML += `<li data-type="${type}" data-title="${results[i]}" onclick="addFilter(this)">${results[i]}</li>`;
+        }
+      } else {
         document.getElementById(`results__${type}`).style.display = 'none';
       }
     } else {
       document.getElementById(`results__${type}`).style.display = 'none';
+    }
   };
 })
 
+function getResults(input, type) {
+  const results = [];
+  let datas;
+  if (type == 'ingredients') {
+    datas = allIngredients;
+  }
+
+  if (type == 'ustensils') {
+    datas = allUstensils;
+  }
+
+  if (type == 'devices') {
+    datas = allDevices;
+  }
+
+  datas.forEach(data => {
+    console.log(input.toLowerCase());
+    console.log(data.toLowerCase())
+    if (data.toLowerCase().includes(input.toLowerCase())) {
+      results.push(data);
+      } 
+    })
+  return results;
+}
