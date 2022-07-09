@@ -103,7 +103,6 @@ autocomplete.forEach(el => {
     let results = [];
     const userInput = this.value;
     const type = this.dataset.search;
-    // console.log(type);
     document.getElementById(`results__${type}`).innerHTML = '';
     const allResults = document.querySelectorAll('.results');
     

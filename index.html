@@ -31,7 +31,7 @@
             <input id="inputIng" type="search" class="autocomplete filters__listContainer filters__listContainer--ingredients filters__input"
             placeholder="Ingrédients"  data-search="ingredients" autocomplete="off" >
             <button id="ingBtn" class=" filters__dropDown filters__btn--ingredients" aria-controls="ingredientsContainer">
-              <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown">
+              <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown" id="icon_1">
             </button> 
           </form> 
           
@@ -53,7 +53,7 @@
             <input id="inputDev" class="autocomplete filters__listContainer filters__listContainer--device filters__input" placeholder="Appareils"
               type="search" data-search="devices" autocomplete="off">
             <button id="devBtn" class="filters__dropDown filters__btn--device" aria-controls="deviceContainer">
-              <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown">
+              <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown" id="icon_2">
             </button>
           </form>
 
@@ -77,12 +77,12 @@
             <input id="inputUst" class="autocomplete filters__listContainer filters__listContainer--ustensils filters__input"
               placeholder="Ustensiles" type="search" data-search="ustensils" autocomplete="off">
             <button id="ustBtn" class=" filters__dropDown filters__btn--ustensils" aria-controls="ustensilsContainer">
-              <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown">
+              <img src="./public/assets/dropdown-icon-down.png" alt="dropdown" class="ico ico__dropDown" id="icon_3">
             </button>
           </form>
        
         <ul id="sugestion"></ul>
-        <ul id="results__untensils" class="results" style="display: none;"></ul>
+        <ul id="results__ustensils" class="results" style="display: none;"></ul>
 
           <div id="ustensilsContainer" class="filters__inputContainer filters__inputContainer--ustensils">
             <div id="ustensilsTagsContainer" class="tags__container tags__container--ustensils">
@@ -99,7 +99,7 @@
     <section id="recipeContainer" class="recipe__mainContainer">
       <!-- dynamic load -->
     </section>
- 
+
     </main>
     <script src="script/index.js"></script>
     <script src="script/message.js"></script>

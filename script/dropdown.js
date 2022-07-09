@@ -18,37 +18,46 @@ function openTaglist(idContainer, index) {
 
   if(tagContainer.classList.contains("is-expanded")) {
     tagContainer.classList.remove("is-expanded");
-    icoDropDown.classList.replace("ico__dropUp","ico__dropDown")
+    // icoDropDown.classList.replace("ico__dropUp","ico__dropDown")
     closeInput();
 
   } else {
     if(document.querySelector(".filters__inputContainer.is-expanded") != null) {
-      document.querySelector(".filters__inputContainer.is-expanded") .classList.remove("is-expanded");
+      document.querySelector(".filters__inputContainer.is-expanded").classList.remove("is-expanded");
       closeInput(this)
     }
 
     tagContainer.classList.add("is-expanded");
-    icoDropDown.classList.replace("ico__dropDown","ico__dropUp");
+    // icoDropDown.classList.replace("ico__dropDown","ico__dropUp");
 
     if(index == 0) {
       inputIng.classList.add("btn-Expansed");
       document.getElementById("inputIng").placeholder = 'Rechercher un ingredient ...';
+      document.getElementById("results__ingredients").style.display = "none";
+      document.getElementById("icon_1").classList.replace("ico__dropDown","ico__dropUp");
     }
 
     if(index == 1) {
       inputDev.classList.add("btn-Expansed");
       document.getElementById("inputDev").placeholder = 'Rechercher un appareil ...';
+      document.getElementById("results__devices").style.display = "none";
+      document.getElementById("icon_2").classList.replace("ico__dropDown", "ico__dropUp");
     }
 
     if(index == 2) {
       inputUst.classList.add("btn-Expansed");
       document.getElementById("inputUst").placeholder = 'Rechercher un ustensiles ...';
+      document.getElementById("results__ustensils").style.display = "none";
+      document.getElementById("icon_3").classList.replace("ico__dropDown", "ico__dropUp");
     }
   }
 }
 
 function closeInput() {
   const isExpanded = document.querySelectorAll(`.btn-Expansed`);
+  document.getElementById("icon_1").classList.replace("ico__dropUp", "ico__dropDown");
+  document.getElementById("icon_2").classList.replace("ico__dropUp", "ico__dropDown");
+  document.getElementById("icon_3").classList.replace("ico__dropUp", "ico__dropDown");
 
   isExpanded.forEach(btn => {
     btn.classList.remove(`btn-Expansed`);
