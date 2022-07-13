@@ -81,8 +81,28 @@ function recipeCardDom(recipes) {
       if (allUstensils.indexOf(e) == -1) allUstensils.push(e);
     });
   });
-
+  
   showTags(allIngredients, "ingredientsTaglist", "ingredients");
-  showTags(allDevices, "devicesTaglist", "device");
+  showTags(allDevices, "devicesTaglist", "devices");
   showTags(allUstensils, "ustensilsTaglist", "ustensils");
+}
+
+function searchKeyword() {
+  launchSearch();
+}
+
+document.querySelector("form.searchBar").addEventListener("submit", (e) => {
+  e.preventDefault();
+})
+
+function launchSearch() {
+
+  const searchKeyword = document.getElementById("search").value;
+  const tagList = document.getElementById("tagsBtn");
+  const allTags = tagList.getElementsByTagName("button");
+  const tagsStringList = [];
+  const recipesArrayFiltered = [];
+
+  
+
 }
