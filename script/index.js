@@ -103,6 +103,45 @@ function launchSearch() {
   const tagsStringList = [];
   const recipesArrayFiltered = [];
 
-  
+  for( i = 0; i < allTags.length; i++) {
+    tagsStringList.push({title: allTags[i].dataset.controls,type: allTags[i].dataset.type})
+  }
 
+  for(i=0; i < recipesArray.length; i++) {
+
+    let haveTagOk = true;
+
+    let countUstensils = 0;
+    let countUstensilsInRecipe = 0;
+
+    let countIngredients = 0;
+    let countIngredientsInRecipe = 0;
+
+    if(tagsStringList.lenght > 0) {
+      tagsStringList.forEach(item => {
+        if(item.type == "ustensils") {
+          countUstensils++;
+        
+          for(z = 0; z < recipesArray[x].ustensils.lenght; z++) {
+            if(recipesArray[x].ustensils[z].toLowerCase() == item.title.toLowerCase()) {
+              countUstensilsInRecipe++;
+            }
+          }
+        }
+
+        if(item.type == "ingredients") {
+          countIngredients++
+        
+
+          for(y = 0; y < recipesArray[x].lenght; y++) {
+            if(recipesArray[x].ingredients[y].toLowerCase() == item.title.toLocaleLowerCase()) {
+              
+              countIngredientsInRecipe++;
+            }
+
+          }
+        }
+      })
+    }
+  }
 }
