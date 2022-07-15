@@ -87,27 +87,21 @@ function recipeCardDom(recipes) {
   showTags(allUstensils, "ustensilsTaglist", "ustensils");
 }
 
-function searchKeyword() {
-  launchSearch();
-}
-
-document.querySelector("form.searchBar").addEventListener("submit", (e) => {
-  e.preventDefault();
-})
 
 function launchSearch() {
-
-  const searchKeyword = document.getElementById("search").value;
-  const tagList = document.getElementById("tagsBtn");
-  const allTags = tagList.getElementsByTagName("button");
+  // Retrieve my tags and retrieve my search field
+  const searchKeyword = document.getElementById('search').value;
+  const tagList = document.getElementById('tagsBtn');
+  const allTags = tagList.getElementsByTagName('button');
   const tagsStringList = [];
   const recipesArrayFiltered = [];
 
-  for( i = 0; i < allTags.length; i++) {
-    tagsStringList.push({title: allTags[i].dataset.controls,type: allTags[i].dataset.type})
+  // Get all tags selected
+  for (i = 0; i < allTags.length; i++) {
+    tagsStringList.push({ title: allTags[i].dataset.controls, type: allTags[i].dataset.type });
   }
 
-  for(i=0; i < recipesArray.length; i++) {
+  for (x = 0; x < recipesArray.length; x++) {
 
     let haveTagOk = true;
 
@@ -117,31 +111,76 @@ function launchSearch() {
     let countIngredients = 0;
     let countIngredientsInRecipe = 0;
 
-    if(tagsStringList.lenght > 0) {
+    if (tagsStringList.length > 0) {
       tagsStringList.forEach(item => {
-        if(item.type == "ustensils") {
+        if (item.type == "ustensils") {
           countUstensils++;
         
-          for(z = 0; z < recipesArray[x].ustensils.lenght; z++) {
-            if(recipesArray[x].ustensils[z].toLowerCase() == item.title.toLowerCase()) {
+          for (z = 0; z < recipesArray[x].ustensils.length; z++) {
+            if (recipesArray[x].ustensils[z].toLowerCase() == item.title.toLocaleLowerCase()) {
               countUstensilsInRecipe++;
             }
           }
         }
 
-        if(item.type == "ingredients") {
-          countIngredients++
-        
-
-          for(y = 0; y < recipesArray[x].lenght; y++) {
-            if(recipesArray[x].ingredients[y].toLowerCase() == item.title.toLocaleLowerCase()) {
-              
+        if (item.type == "ingredients") {
+          countIngredients++;
+          for (y = 0; y < recipesArray[x].ingredients.length; y++) {
+            if (recipesArray[x].ingredients[y].ingredient.toLowerCase() == item.title.toLocaleLowerCase()) {
               countIngredientsInRecipe++;
             }
-
           }
         }
-      })
+
+        if (item.type == "device")
+          if (recipesArray[x].appliance != item.title) {
+            haveTagOk = false;
+          }
+      });
+
+      if (countUstensilsInRecipe != countUstensils) {
+        haveTagOk = false;
+      }
+
+      if (countIngredientsInRecipe != countIngredients) {
+        haveTagOk = false;
+      }
+    }
+
+    let wordContains = true;
+    if (searchKeyword.length >= 3) {
+      const titleLowerCase = recipesArray[x].name.toLowerCase();
+      const descriptionLowerCase = recipesArray[x].description.toLowerCase();
+
+      let ingredientsSentence = '';
+      for (u = 0; u < recipesArray[x].ingredients.length; u++) {
+        ingredientsSentence = ingredientsSentence + ' ' + recipesArray[x].ingredients[u].ingredient;
+      }
+
+      // We write a sentence with the ingredients separated by a lowercase space
+      const ingredientsLowerCase = ingredientsSentence.toLowerCase();
+      const ingredientsList = ingredientsLowerCase.split(' ');
+      let ingredientsInSearch = false;
+
+      for (b = 0; b < ingredientsList.length; b++) {
+        if (ingredientsList[b].includes(searchKeyword.toLowerCase())) {
+          ingredientsInSearch = true;
+        }
+      }
+
+      if (!titleLowerCase.includes(searchKeyword.toLowerCase()) &&
+        !descriptionLowerCase.includes(searchKeyword.toLowerCase()) &&
+        !ingredientsInSearch) {
+        wordContains = false;
+      }
+
+    }
+    if (haveTagOk && wordContains) {
+      recipesArrayFiltered.push(recipesArray[x]);
     }
   }
+
+  recipeCardDom(recipesArrayFiltered);
+  const count = recipesArrayFiltered.length;
+  showErrorMessage(count);
 }

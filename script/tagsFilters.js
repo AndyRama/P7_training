@@ -57,7 +57,7 @@ function addFilter(e) {
         </svg>
       </button>
     `;
-    // launchSearch();
+    launchSearch();
   }
 }
 
@@ -144,8 +144,6 @@ function getResults(input, type) {
   }
 
   datas.forEach(data => {
-    console.log(input.toLowerCase());
-    console.log(data.toLowerCase())
     if (data.toLowerCase().includes(input.toLowerCase())) {
       results.push(data);
       } 
