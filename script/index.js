@@ -87,7 +87,7 @@ function recipeCardDom(recipes) {
   showTags(allUstensils, "ustensilsTaglist", "ustensils");
 }
 
-
+// Algo 1
 function launchSearch() {
   // Retrieve my tags and retrieve my search field
   const searchKeyword = document.getElementById('search').value;
@@ -148,10 +148,13 @@ function launchSearch() {
     }
 
     let wordContains = true;
+    // condition 1
     if (searchKeyword.length >= 3) {
+      // title and description ToLowerCase
       const titleLowerCase = recipesArray[x].name.toLowerCase();
       const descriptionLowerCase = recipesArray[x].description.toLowerCase();
-
+      
+      //Create a sentence
       let ingredientsSentence = '';
       for (u = 0; u < recipesArray[x].ingredients.length; u++) {
         ingredientsSentence = ingredientsSentence + ' ' + recipesArray[x].ingredients[u].ingredient;
@@ -179,8 +182,17 @@ function launchSearch() {
       recipesArrayFiltered.push(recipesArray[x]);
     }
   }
-
+  // display recipes filtered with tags and searchkeyword
   recipeCardDom(recipesArrayFiltered);
   const count = recipesArrayFiltered.length;
   showErrorMessage(count);
 }
+
+// Algo 2
+
+function launchSearch() {
+ 
+
+}
+
+
